@@ -11,21 +11,26 @@ public class Main {
         char[] opCodes = {'d', 'm', 'a', 's'};
 
         // Calculating
-        for(int i = 0; i<4; i++){
-            if(opCodes[i] == 'a'){
-                results[i] = left_values[i] + right_values[i];
-            } else if(opCodes[i] == 's'){
-                results[i] = left_values[i] - right_values[i];
-            } else if(opCodes[i] == 'm'){
-                results[i] = left_values[i] * right_values[i];
-            } else if(opCodes[i] == 'd'){
-                // Ternary operator
-                results[i] = (right_values[i] == 0 ? 0 : left_values[i]/right_values[i]);
-            } else {
-                System.out.println("Invalid opCode: " + opCodes[i]);
-                results[i] = 0.0d;
+        for(int i = 0; i<opCodes.length; i++){
+            switch (opCodes[i]) {
+                case 'a':
+                    results[i] = left_values[i] + right_values[i];
+                    break;
+                case 's':
+                    results[i] = left_values[i] - right_values[i];
+                    break;
+                case 'm':
+                    results[i] = left_values[i] * right_values[i];
+                    break;
+                case 'd':
+                    // Ternary operator
+                    results[i] = (right_values[i] == 0 ? 0 : left_values[i] / right_values[i]);
+                    break;
+                default:
+                    System.out.println("Invalid opCode: " + opCodes[i]);
+                    results[i] = 0.0d;
+                }
             }
-        }
 
         // Printing the results
         for(double result : results){
