@@ -4,37 +4,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Initializing the numbers and operator using parallel arrays
-        double[] left_values = {1.0d, 10.0d, 100.0d, 500.0d};
-        double[] right_values = {0.20d, 2.0d, 20.0d, 100.0d};
-        double[] results = new double[4];
-        char[] opCodes = {'d', 'm', 'a', 's'};
+        // Creating 4 objects of calculate class to store data for computation
+        Calculate[] list = new Calculate[4];
+        list[0] = new Calculate(1.0d, 0.20d, 'd');
+        list[1] = new Calculate(10.0d, 2.0d, 'm');
+        list[2] = new Calculate(100.0d, 20.0d, 'a');
+        list[3] = new Calculate(500.0d, 100.0d, 's');
 
-        // Calculating
-        for(int i = 0; i<opCodes.length; i++){
-            switch (opCodes[i]) {
-                case 'a':
-                    results[i] = left_values[i] + right_values[i];
-                    break;
-                case 's':
-                    results[i] = left_values[i] - right_values[i];
-                    break;
-                case 'm':
-                    results[i] = left_values[i] * right_values[i];
-                    break;
-                case 'd':
-                    // Ternary operator
-                    results[i] = (right_values[i] == 0 ? 0 : left_values[i] / right_values[i]);
-                    break;
-                default:
-                    System.out.println("Invalid opCode: " + opCodes[i]);
-                    results[i] = 0.0d;
-                }
-            }
+        // Calculating the result for each of the data set
+        for(int i = 0; i<list.length; i++){
+            list[i].execute();
+        }
 
         // Printing the results
-        for(double result : results){
-            System.out.println(result);
+        for(Calculate entry : list){
+            System.out.println(entry.getResult());
         }
 
     }
