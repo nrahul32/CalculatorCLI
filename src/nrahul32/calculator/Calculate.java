@@ -5,9 +5,9 @@ public class Calculate {
     private double left_value;
     private double right_value;
     private double result;
-    private char opCode;
+    private Command opCode;
     
-    public Calculate(double left_value, double right_value, char opCode){
+    public Calculate(double left_value, double right_value, Command opCode){
         this.left_value = left_value;
         this.right_value = right_value;
         this.opCode = opCode;
@@ -15,16 +15,16 @@ public class Calculate {
     
     public void execute(){
         switch (opCode) {
-            case 'a':
+            case Add:
                 result = left_value + right_value;
                 break;
-            case 's':
+            case Subtract:
                 result = left_value - right_value;
                 break;
-            case 'm':
+            case Multiply:
                 result = left_value * right_value;
                 break;
-            case 'd':
+            case Divide:
                 // Ternary operator
                 result = (right_value == 0 ? 0 : left_value / right_value);
                 break;
