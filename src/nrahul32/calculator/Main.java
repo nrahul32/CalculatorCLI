@@ -18,7 +18,7 @@ public class Main {
 
         // Printing the results
         for(Calculate entry : list){
-            System.out.println(entry.getResult());
+            entry.printResult();
         }
 
     }
