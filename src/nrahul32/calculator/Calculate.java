@@ -30,8 +30,10 @@ public class Calculate {
                 symbol = '*';
                 break;
             case Divide:
-                // Ternary operator
-                result = (right_value == 0 ? 0 : left_value / right_value);
+                if(right_value == 0){
+                    throw new IllegalArgumentException("Denominator cannot be 0 while performing Divide action");
+                }
+                result = left_value / right_value;
                 symbol = '/';
                 break;
             default:
