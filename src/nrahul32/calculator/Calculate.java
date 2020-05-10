@@ -16,36 +16,39 @@ public class Calculate {
     }
     
     public void execute(){
+        CalculateBase c = null;
         switch (opCode) {
             case Add:
-                result = left_value + right_value;
+                c = new Adder(left_value, right_value);
                 symbol = '+';
                 break;
             case Subtract:
-                result = left_value - right_value;
+                c = new Subtractor(left_value, right_value);
                 symbol = '-';
                 break;
             case Multiply:
-                result = left_value * right_value;
+                c = new Multiplier(left_value, right_value);
                 symbol = '*';
                 break;
             case Divide:
-                if(right_value == 0){
-                    throw new IllegalArgumentException("Denominator cannot be 0 while performing Divide action");
-                }
-                result = left_value / right_value;
+                c = new Divider(left_value, right_value);
                 symbol = '/';
                 break;
             default:
-                System.out.println("Invalid opCode: " + opCode);
-                result = 0.0d;
+                System.out.println("This will never execute as opCode cannot have any other values");
         }
+        result = c.execute();
     }
 
     public double getResult(){
         return this.result;
     }
 
+    /**
+     * This prints the result in the form:
+     * 1.0 / 0.2 = 5.0
+     * 10.0 * 2.0 = 20.0
+     */
     public void printResult(){
         StringBuilder sb = new StringBuilder(20);
         sb.append(left_value)

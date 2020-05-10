@@ -7,7 +7,7 @@ public class Main {
         // Getting inputs as readable strings in an array
         String[] inputs = {
                 "Add 100d 20d",
-                "Divide 1 0.2",
+                "Divide 1 0.2d",
                 "Multiply 10.0d 2d",
                 "Subtract 500 100"
         };
